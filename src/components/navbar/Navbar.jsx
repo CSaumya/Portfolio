@@ -14,7 +14,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full bg-transparent text-white py-4 fixed top-0 left-0 z-50">
+    <nav className="w-full text-white mb-10 py-4 fixed top-0 left-0 z-50 bg-[#0466c8]">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <img src={NameLogo} alt="logo" className="h-[60px] md:h-[80px]" />
 

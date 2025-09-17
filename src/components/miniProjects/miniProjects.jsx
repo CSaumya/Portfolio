@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import todo from "../../assets/Todo.png";
 import weather from "../../assets/weather.png";
 import razorpay from "../../assets/razorpay.png";
@@ -50,6 +50,24 @@ const projects = [
   },
 ];
 
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute top-1/2 right-2 z-10 transform -translate-y-1/2 cursor-pointer text-blue-700 hover:text-blue-900"
+    onClick={onClick}
+  >
+    <FaArrowRight size={24} />
+  </div>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute top-1/2 left-2 z-10 transform -translate-y-1/2 cursor-pointer text-blue-700 hover:text-blue-900"
+    onClick={onClick}
+  >
+    <FaArrowLeft size={24} />
+  </div>
+);
+
 const MiniProjects = () => {
   const settings = {
     dots: true,
@@ -60,53 +78,35 @@ const MiniProjects = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
-      {
-        breakpoint: 1024, // tablets
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640, // mobile
-        settings: { slidesToShow: 1 },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: "20px" } },
+      { breakpoint: 375, settings: { slidesToShow: 1, centerMode: true, centerPadding: "10px" } },
+      { breakpoint: 320, settings: { slidesToShow: 1, centerMode: true, centerPadding: "5px" } },
     ],
   };
 
   return (
-    <div className="text-white py-16 px-6 min-h-screen flex flex-col justify-center">
+    <div className="text-white py-16 px-4 sm:px-6 md:px-12 min-h-screen flex flex-col justify-center relative">
       <Slider {...settings}>
         {projects.map((p) => (
-          <div key={p.id} className="px-2">
-            <div
-              className="flex flex-col items-center text-center rounded-2xl shadow-xl p-5 
-              bg-gradient-to-b from-gray-300 to-gray-600 
-              w-full max-w-[400px] mx-auto h-auto"
-            >
+          <div key={p.id} className="px-2 sm:px-3">
+            <div className="flex flex-col items-center text-center rounded-2xl shadow-xl p-5 bg-gradient-to-b from-gray-300 to-gray-600 w-full max-w-[400px] mx-auto h-auto">
               <img
                 src={p.img}
                 alt={p.title}
-                className="w-full max-w-[280px] h-auto mb-4 rounded-xl 
-                transition-transform duration-500 shadow-2xl border border-amber-50"
+                className="w-full max-w-[280px] h-auto mb-4 rounded-xl transition-transform duration-500 shadow-2xl border border-amber-50"
               />
-              <h3 className="text-xl sm:text-2xl font-bold text-blue-700 drop-shadow-md">
-                {p.title}
-              </h3>
-              <p className="text-sm sm:text-base text-blue-100 mt-2 flex-grow px-2">
-                {p.desc}
-              </p>
-              <div className="flex justify-center items-center gap-4 bg-blue-600 backdrop-blur-md rounded-3xl px-5 w-[130px] h-[42px] shadow-md mt-4 transition duration-300 hover:bg-blue-800/80">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 drop-shadow-md">{p.title}</h3>
+              <p className="text-xs sm:text-sm md:text-base text-blue-100 mt-2 flex-grow px-2">{p.desc}</p>
+              <div className="flex justify-center items-center gap-3 sm:gap-4 bg-blue-600 backdrop-blur-md rounded-3xl px-4 sm:px-5 w-[120px] sm:w-[130px] h-[38px] sm:h-[42px] shadow-md mt-4 transition duration-300 hover:bg-blue-800/80">
                 <a href={p.github} target="_blank" rel="noreferrer">
-                  <FaGithub
-                    size={26}
-                    className="hover:scale-125 transition text-white border-r-2 pr-2"
-                  />
+                  <FaGithub size={22} className="hover:scale-125 transition text-white border-r-2 pr-2" />
                 </a>
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-white hover:scale-110 transition"
-                >
+                <a href={p.live} target="_blank" rel="noreferrer" className="font-semibold text-white hover:scale-110 transition text-xs sm:text-sm">
                   Live⚡
                 </a>
               </div>
@@ -119,3 +119,4 @@ const MiniProjects = () => {
 };
 
 export default MiniProjects;
+
