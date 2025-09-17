@@ -1,0 +1,152 @@
+.welcome-screen {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #9EB3C2, white);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1B3B6F;
+  animation: welcome-screen 1s ease-in-out forwards;
+  animation-delay: 7.8s;
+}
+
+@keyframes welcome-screen {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+/* Text container */
+.text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Shared text styles */
+.text p,
+.text h2 {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  overflow: hidden;
+}
+
+/* Small heading */
+.text p {
+  font-size: 2rem;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: textrevelreverse 2s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+.text p::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform-origin: right;
+  background-color: #21295C;
+  animation: textrevel 2s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+/* Big heading */
+.text h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  transform-origin: right;
+  transform: scaleX(0);
+  animation: textrevelreverse 2s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+.text h2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background-color: #21295C;
+  animation: textrevel 2s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+/* Text reveal animations */
+@keyframes textrevel {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+@keyframes textrevelreverse {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* First layer (dark navy) */
+.layer1 {
+  position: absolute;
+  inset: 0;
+  background-color: #21295C;
+  animation: layer1 1s ease-in-out forwards;
+  animation-delay: 0s;
+  z-index: 3;
+}
+
+@keyframes layer1 {
+  0% { transform: translateY(0); }
+  70% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Second layer (blue) */
+.layer2 {
+  position: absolute;
+  inset: 0;
+  background-color: #1B3B6F;
+  animation: layer2 1s ease-in-out forwards;
+  animation-delay: 0.8s;
+  z-index: 2;
+}
+
+@keyframes layer2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@media (max-width: 768px) {
+  .welcome-screen {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .text p {
+    font-size: 1.5rem;
+  }
+
+  .text h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .welcome-screen {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .text p {
+    font-size: 1.2rem;
+  }
+
+  .text h2 {
+    font-size: 2rem;
+  }
+}
