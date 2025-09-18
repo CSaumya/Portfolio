@@ -115,6 +115,7 @@ const Project = () => {
               <img
                 src={p.img}
                 alt={p.title}
+                loading="lazy"
                 className="w-full h-40 sm:h-52 object-contain mb-3 rounded-lg transition-transform duration-300 hover:scale-105"
               />
               <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-700">

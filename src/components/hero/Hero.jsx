@@ -48,6 +48,7 @@ const Hero = () => {
         <img
           src={profileImg}
           alt="Profile"
+          loading="lazy"
           className="w-40 h-40 md:w-80 md:h-80 rounded-full border-4 border-blue-800 shadow-xl z-10 glow-photo"
         />
       </div>

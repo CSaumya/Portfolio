@@ -122,6 +122,7 @@ const Project = () => {
           <img
             src={eCommerce}
             alt="Bite Box Preview"
+            loading='lazy'
             className="w-full max-w-[350px] rounded-lg"
           />
 
