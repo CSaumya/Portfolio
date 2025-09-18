@@ -90,15 +90,6 @@ const Project = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-12 lg:px-20 py-10 relative">
-      {/* Heading */}
-      <div className="text-center mb-10">
-        <p className="text-[18px] sm:text-[20px] md:text-[25px] text-[#9cabce]">
-          My Learnings So Far
-        </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#21295C]">
-          Projects
-        </h1>
-      </div>
 
       {/* Slider */}
       <Slider {...settings}>
