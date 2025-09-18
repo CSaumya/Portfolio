@@ -15,7 +15,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="mx-auto px-4 flex flex-col-reverse md:flex-row justify-center items-center min-h-screen text-white gap-10">
+    <div className="mx-auto px-4 flex flex-col-reverse md:flex-row justify-center items-center mt-20 min-h-screen text-white gap-10">
       
       {/* Left Content */}
       <div className="flex flex-col gap-6 max-w-xl text-center md:text-left">

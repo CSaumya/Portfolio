@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NameLogo from "../../assets/name-logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-scroll"; 
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
     { name: "Projects", to: "projects" },
@@ -13,8 +14,26 @@ const Navbar = () => {
     { name: "Find Me On", to: "find-me" },
   ];
 
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="w-full text-white mb-10 py-4 fixed top-0 left-0 z-50 bg-[#0466c8]">
+    <nav
+      className={`w-full text-white mb-[30px] py-4 fixed top-0 left-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[#2D2D5C] shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <img src={NameLogo} alt="logo" className="h-[60px] md:h-[80px]" />
 
@@ -22,12 +41,7 @@ const Navbar = () => {
         <ul className="hidden md:flex list-none gap-8 cursor-pointer transition-all duration-300 ease-in-out">
           {navItems.map((item) => (
             <li key={item.to} className="hover:underline underline-offset-4">
-              <Link
-                to={item.to}
-                smooth={true}
-                duration={500}
-                offset={-80} 
-              >
+              <Link to={item.to} smooth={true} duration={500} offset={-80}>
                 {item.name}
               </Link>
             </li>

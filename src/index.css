@@ -11,8 +11,8 @@
 body{
    font-family: "Montserrat", sans-serif;
    min-height: 100vh;
-   background: linear-gradient(to bottom, #0466c8, #0353a4);
-   overflow-x: hidden;
+background: #3f3c80;
+background: linear-gradient(0deg, rgba(63, 60, 128, 1) 0%, rgba(56, 56, 156, 1) 35%, rgba(134, 175, 181, 1) 100%);  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

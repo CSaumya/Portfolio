@@ -1,112 +1,141 @@
 import React from "react";
 import Slider from "react-slick";
-import { FaGithub, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import todo from "../../assets/Todo.png";
 import weather from "../../assets/weather.png";
 import razorpay from "../../assets/razorpay.png";
 import mail from "../../assets/mailify.png";
 import ticTac from "../../assets/tic-tac-toe.png";
 
+// Project Data
 const projects = [
   {
     id: 1,
-    title: "Smart-ToDo",
-    desc: "ToDo web with interactive features and dark/light theme toggle!",
+    title: "Smart ToDo",
+    desc: "A modern ToDo app with dark/light mode.",
     img: todo,
     github: "https://github.com/CSaumya/SmartToDo",
-    live: "https://csaumya.github.io/SmartToDo/",
+    live: "https://smarttodo-seven.vercel.app/",
   },
   {
     id: 2,
-    title: "SkyCast",
-    desc: "Weather forecasting app with live API integration.",
+    title: "Weather App",
+    desc: "Fetches live weather data using OpenWeather API.",
     img: weather,
-    github: "https://github.com/CSaumya/SkyCast",
-    live: "https://csaumya.github.io/SkyCast/",
+    github: "https://github.com/CSaumya/WeatherApp",
+    live: "https://weatherapp-opal-kappa.vercel.app/",
   },
   {
     id: 3,
-    title: "Mailify",
-    desc: "Email validator website with beautiful Ui.",
-    img: mail,
-    github: "https://github.com/CSaumya/Mailify",
-    live: "https://csaumya.github.io/Mailify/",
+    title: "Razorpay Clone",
+    desc: "A Ui clone of Razorpay with TailwindCSS.",
+    img: razorpay,
+    github: "https://github.com/CSaumya/Razorpay-Clone",
+    live: "https://razorpay-clone-wine.vercel.app/",
   },
   {
     id: 4,
-    title: "Razorpay Ui Clone",
-    desc: "Frontend clone of Razorpay payment gateway.",
-    img: razorpay,
-    github: "https://github.com/CSaumya/RazorPay-UI-Clone",
-    live: "https://csaumya.github.io/RazorPay-UI-Clone/",
+    title: "Mailify",
+    desc: "Email validator website with great Ui.",
+    img: mail,
+    github: "https://github.com/CSaumya/Mailify",
+    live: "https://mailify-wheat.vercel.app/",
   },
   {
     id: 5,
-    title: "Tic Tac Toe",
-    desc: "Classic Tic Tac Toe game with interactive results.",
+    title: "Tic-Tac-Toe",
+    desc: "Classic 2-player Tic-Tac-Toe game built.",
     img: ticTac,
     github: "https://github.com/CSaumya/Tic-Tac-Toe",
-    live: "https://csaumya.github.io/Tic-Tac-Toe/",
+    live: "https://tic-tac-toe-csaumya.vercel.app/",
   },
 ];
 
+// Custom Arrow Buttons
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 right-2 z-10 transform -translate-y-1/2 cursor-pointer text-blue-700 hover:text-blue-900"
+    className="absolute right-[-15px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer text-white text-2xl sm:text-3xl"
     onClick={onClick}
   >
-    <FaArrowRight size={24} />
+    ➤
   </div>
 );
 
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 left-2 z-10 transform -translate-y-1/2 cursor-pointer text-blue-700 hover:text-blue-900"
+    className="absolute left-[-15px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer text-white text-2xl sm:text-3xl rotate-180"
     onClick={onClick}
   >
-    <FaArrowLeft size={24} />
+    ➤
   </div>
 );
 
-const MiniProjects = () => {
+const Project = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 3500,
     pauseOnHover: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: "20px" } },
-      { breakpoint: 375, settings: { slidesToShow: 1, centerMode: true, centerPadding: "10px" } },
-      { breakpoint: 320, settings: { slidesToShow: 1, centerMode: true, centerPadding: "5px" } },
+      { breakpoint: 1280, settings: { slidesToShow: 2 } }, // tablets & small laptops
+      { breakpoint: 768, settings: { slidesToShow: 1 } },  // mobile → 1 card
     ],
   };
 
   return (
-    <div className="text-white py-16 px-4 sm:px-6 md:px-12 min-h-screen flex flex-col justify-center relative">
+    <div className="px-4 sm:px-8 md:px-12 lg:px-20 py-10 relative">
+      {/* Heading */}
+      <div className="text-center mb-10">
+        <p className="text-[18px] sm:text-[20px] md:text-[25px] text-[#9cabce]">
+          My Learnings So Far
+        </p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#21295C]">
+          Projects
+        </h1>
+      </div>
+
+      {/* Slider */}
       <Slider {...settings}>
         {projects.map((p) => (
-          <div key={p.id} className="px-2 sm:px-3">
-            <div className="flex flex-col items-center text-center rounded-2xl shadow-xl p-5 bg-gradient-to-b from-gray-300 to-gray-600 w-full max-w-[400px] mx-auto h-auto">
+          <div key={p.id} className="px-2">
+            <div
+              className="
+                flex flex-col items-center text-center 
+                rounded-xl shadow-lg p-4 sm:p-6 
+                bg-gradient-to-b from-gray-200 to-gray-500 
+                w-full max-w-[500px] mx-auto h-auto
+              "
+            >
               <img
                 src={p.img}
                 alt={p.title}
-                className="w-full max-w-[280px] h-auto mb-4 rounded-xl transition-transform duration-500 shadow-2xl border border-amber-50"
+                className="w-full h-40 sm:h-52 object-contain mb-3 rounded-lg transition-transform duration-300 hover:scale-105"
               />
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 drop-shadow-md">{p.title}</h3>
-              <p className="text-xs sm:text-sm md:text-base text-blue-100 mt-2 flex-grow px-2">{p.desc}</p>
-              <div className="flex justify-center items-center gap-3 sm:gap-4 bg-blue-600 backdrop-blur-md rounded-3xl px-4 sm:px-5 w-[120px] sm:w-[130px] h-[38px] sm:h-[42px] shadow-md mt-4 transition duration-300 hover:bg-blue-800/80">
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-700">
+                {p.title}
+              </h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-100 mt-2 flex-grow">
+                {p.desc}
+              </p>
+              <div className="flex justify-center items-center gap-3 bg-blue-600 rounded-full px-4 py-2 mt-4 shadow-md hover:bg-blue-700 transition">
                 <a href={p.github} target="_blank" rel="noreferrer">
-                  <FaGithub size={22} className="hover:scale-125 transition text-white border-r-2 pr-2" />
+                  <FaGithub
+                    size={28}
+                    className="text-white hover:scale-125 transition border-r-2 pr-2"
+                  />
                 </a>
-                <a href={p.live} target="_blank" rel="noreferrer" className="font-semibold text-white hover:scale-110 transition text-xs sm:text-sm">
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-white text-xs sm:text-sm"
+                >
                   Live⚡
                 </a>
               </div>
@@ -118,5 +147,4 @@ const MiniProjects = () => {
   );
 };
 
-export default MiniProjects;
-
+export default Project;
