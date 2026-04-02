@@ -91,7 +91,6 @@ const MiniProjects = () => {
   return (
     <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-12 max-w-7xl mx-auto overflow-hidden">
       
-      {/* Heading */}
       <div className="text-center mb-12 md:mb-16">
         <p className="text-lg sm:text-xl text-gray-300">
           My Learnings So Far
@@ -101,7 +100,6 @@ const MiniProjects = () => {
         </h1>
       </div>
 
-      {/* Slider */}
       <Slider {...settings}>
         {projects.map((p) => (
           <div key={p.id} className="px-2 sm:px-3">
@@ -116,7 +114,6 @@ const MiniProjects = () => {
                 transition duration-300 hover:shadow-2xl
               "
             >
-              {/* Image */}
               <img
                 src={p.img}
                 alt={p.title}
@@ -124,17 +121,14 @@ const MiniProjects = () => {
                 className="w-full h-36 sm:h-44 md:h-52 object-contain mb-3 rounded-lg"
               />
 
-              {/* Title */}
               <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-300">
                 {p.title}
               </h3>
 
-              {/* Description */}
               <p className="text-xs sm:text-sm text-gray-100 mt-2">
                 {p.desc}
               </p>
 
-              {/* Buttons */}
               <div className="flex items-center gap-3 bg-gray-600 rounded-full px-4 py-2 mt-4 shadow-md hover:bg-gray-700 transition">
                 <a href={p.github} target="_blank" rel="noreferrer">
                   <FaGithub
