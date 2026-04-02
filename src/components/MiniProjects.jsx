@@ -54,68 +54,43 @@ const projects = [
   },
 ];
 
-// Custom Arrow
 const Arrow = ({ direction, onClick }) => (
   <div
     className={`
-      hidden md:flex absolute
-      ${direction === "next" ? "right-2" : "left-2"}
+      absolute ${direction === "next" ? "right-2" : "left-2"} 
       top-1/2 -translate-y-1/2 z-10 cursor-pointer
-      bg-black/40 hover:bg-black/60
-      p-2 sm:p-3 rounded-full
+      bg-black/40 hover:bg-black/60 
+      p-2 sm:p-3 rounded-full 
       text-white text-lg sm:text-2xl
       backdrop-blur-md transition
     `}
     onClick={onClick}
   >
-    {direction === "next" ? "→" : "←"}
-  </div>
+{direction === "next" ? "→" : "←"}  </div>
 );
 
 const MiniProjects = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
+    speed: 600,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     arrows: true,
-
     nextArrow: <Arrow direction="next" />,
     prevArrow: <Arrow direction="prev" />,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
+   responsive: [
+      { breakpoint: 1280, settings: { slidesToShow: 2 } }, 
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
   };
 
   return (
     <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-12 max-w-7xl mx-auto overflow-hidden">
-
+      
       {/* Heading */}
       <div className="text-center mb-12 md:mb-16">
         <p className="text-lg sm:text-xl text-gray-300">
@@ -130,16 +105,17 @@ const MiniProjects = () => {
       <Slider {...settings}>
         {projects.map((p) => (
           <div key={p.id} className="px-2 sm:px-3">
-            <div className="
-              flex flex-col items-center text-center
-              rounded-xl shadow-lg
-              p-4 sm:p-5 md:p-6
-              bg-white/10 backdrop-blur-md border border-white/20
-              w-full
-              mx-auto
-              transition duration-300 hover:shadow-2xl
-            ">
-
+            <div
+              className="
+                flex flex-col items-center text-center
+                rounded-xl shadow-lg
+                p-4 sm:p-5 md:p-6
+                bg-white/10 backdrop-blur-md border border-white/20
+                w-full max-w-[300px] sm:max-w-[340px] md:max-w-[380px]
+                mx-auto
+                transition duration-300 hover:shadow-2xl
+              "
+            >
               {/* Image */}
               <img
                 src={p.img}
@@ -176,7 +152,6 @@ const MiniProjects = () => {
                   Live ⚡
                 </a>
               </div>
-
             </div>
           </div>
         ))}
