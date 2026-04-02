@@ -83,6 +83,7 @@ const MiniProjects = () => {
     autoplaySpeed: 3000,
     pauseOnHover: true,
     arrows: true,
+
     nextArrow: <Arrow direction="next" />,
     prevArrow: <Arrow direction="prev" />,
 
@@ -97,23 +98,24 @@ const MiniProjects = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
           arrows: false,
         },
-         {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        infinite: true,
       },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
       },
     ],
   };
 
   return (
-    <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-12 max-w-7xl mx-auto overflow-x-hidden">
-      
+    <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-12 max-w-7xl mx-auto overflow-hidden">
+
       {/* Heading */}
       <div className="text-center mb-12 md:mb-16">
         <p className="text-lg sm:text-xl text-gray-300">
@@ -137,7 +139,7 @@ const MiniProjects = () => {
               mx-auto
               transition duration-300 hover:shadow-2xl
             ">
-              
+
               {/* Image */}
               <img
                 src={p.img}
@@ -174,6 +176,7 @@ const MiniProjects = () => {
                   Live ⚡
                 </a>
               </div>
+
             </div>
           </div>
         ))}
